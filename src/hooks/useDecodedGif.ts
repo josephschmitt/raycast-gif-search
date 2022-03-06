@@ -1,9 +1,6 @@
-import fs from 'fs';
+import {ReadStream} from 'fs';
 import gifFrames from 'gif-frames';
-import path from 'path';
 import {useEffect, useState} from 'react';
-
-import {environment} from '@raycast/api';
 
 export interface DecodedGifState {
   url: string;
@@ -16,25 +13,27 @@ export function useDecodedGif(url: string, id: string | number) {
   useEffect(() => {
     async function decode() {
       const frames = await gifFrames({url, frames: 'all'});
-      const framePaths: string[] = [];
-
-      const outputDir = path.join(environment.assetsPath, 'decoded-frames', String(id));
-      if (!fs.existsSync(outputDir)) {
-        fs.mkdirSync(outputDir, {recursive: true});
-      }
+      const base64Frames: string[] = [];
 
       for (const frame of frames) {
-        const outputPath = path.join(outputDir, `${frame.frameIndex}.jpg`);
-
-        frame.getImage().pipe(fs.createWriteStream(outputPath));
-        framePaths.push(outputPath);
+        const buff = await stream2buffer(frame.getImage());
+        base64Frames.push(buff.toString('base64'));
       }
 
-      setState({url, frames: framePaths});
+      setState({url, frames: base64Frames});
     }
 
     decode();
   }, [url])
 
   return state;
+}
+
+async function stream2buffer(stream: ReadStream): Promise<Buffer> {
+  return new Promise<Buffer>((resolve, reject) => {
+    const chunks = Array<any>();
+    stream.on("data", chunk => chunks.push(chunk));
+    stream.on("end", () => resolve(Buffer.concat(chunks)));
+    stream.on("error", err => reject(`error converting stream - ${err}`));
+  });
 }

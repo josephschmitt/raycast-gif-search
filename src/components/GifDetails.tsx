@@ -8,7 +8,7 @@ export function GifDetails(props: {item: IGif, index: number}) {
   const {frames = []} = useDecodedGif(props.item.images.original.url, props.item.slug);
   const {currentFrame} = useGifFrames(0, frames, 60);
 
-  const md = `![](file:${currentFrame})`;
+  const md = `<img src="data:image/jpeg;base64,${currentFrame}">`;
 
-  return <Detail markdown={md} />;
+  return <Detail navigationTitle={props.item.title} markdown={md} />;
 }
