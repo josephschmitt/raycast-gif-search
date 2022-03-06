@@ -1,6 +1,5 @@
 import {useState} from "react";
-
-import useInterval from '../hooks/useInterval';
+import {useInterval} from 'usehooks-ts';
 
 interface GifFrameState {
   currentFrame?: string;
