@@ -1,13 +1,13 @@
 import {List, showToast, Toast } from "@raycast/api";
 import {useEffect} from 'react';
 
-import useGiphy, {Topic} from './useGiphy';
+import useGiphyAPI, {Topic} from './hooks/useGiphyAPI';
 import {GifResult} from "./components/GifResult";
 import './fetch-polyfill';
 
 
 export default function Command() {
-  const state = useGiphy(Topic.TRENDING, {});
+  const state = useGiphyAPI(Topic.TRENDING, {});
 
   useEffect(() => {
     if (state.error) {

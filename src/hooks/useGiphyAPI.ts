@@ -3,9 +3,9 @@ import {useEffect, useState} from "react";
 import {GiphyFetch} from '@giphy/js-fetch-api'
 import type {GifsResult} from '@giphy/js-fetch-api';
 
-import {getAPIKey} from './preferences';
+import {getAPIKey} from '../preferences';
 
-interface State {
+interface FetchState {
   items?: GifsResult;
   error?: Error;
 }
@@ -15,11 +15,10 @@ export enum Topic {
   SEARCH = 1,
 }
 
-
 const gf = new GiphyFetch(getAPIKey())
 
-export default function useGiphy(topic: Topic, {term = "", offset = 0}) {
-  const [state, setState] = useState<State>({});
+export default function useGiphyAPI(topic: Topic, {term = "", offset = 0}) {
+  const [state, setState] = useState<FetchState>({});
 
   useEffect(() => {
     async function getTrending() {
@@ -45,3 +44,4 @@ export default function useGiphy(topic: Topic, {term = "", offset = 0}) {
 
   return state;
 }
+

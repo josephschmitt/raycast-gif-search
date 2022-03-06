@@ -1,6 +1,7 @@
 import {IGif} from '@giphy/js-types';
+import {Action, ActionPanel, List} from "@raycast/api";
 
-import {Action, ActionPanel, Detail, List} from "@raycast/api";
+import {GifDetails} from './GifDetails';
 
 export function GifResult(props: {item: IGif, index: number}) {
   return (
@@ -18,13 +19,4 @@ export function GifResult(props: {item: IGif, index: number}) {
       }
     />
   )
-}
-
-export function GifDetails(props: {item: IGif, index: number}) {
-  const {original} = props.item.images;
-  const md = `<img src="${original.url}" width="50%" height="auto" />`;
-
-  return (
-    <Detail markdown={md} />
-  );
 }
