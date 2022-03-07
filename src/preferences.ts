@@ -1,6 +1,7 @@
 import { getPreferenceValues } from "@raycast/api";
 
 export const API_KEY = "apiKey";
+export const SHOW_PREVIEW = "showGifPreview";
 
 export type ServiceName = "giphy" | "tenor";
 export const GIF_SERVICE: { [name: string]: ServiceName } = {
@@ -22,4 +23,8 @@ export function getPrefs() {
 
 export function getAPIKey(serviceName: ServiceName) {
   return getPrefs()[`${serviceName}-${API_KEY}`];
+}
+
+export function getShowPreview() {
+  return getPrefs()[SHOW_PREVIEW];
 }

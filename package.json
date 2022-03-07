@@ -2,7 +2,7 @@
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "gif-search",
   "title": "GIF Search",
-  "description": "Search for animated GIFs (currently supports giphy.com, tenor.com support coming soon!)",
+  "description": "Search for animated GIFs from giphy.com or tenor.com",
   "icon": "command-icon.png",
   "author": "josephschmitt",
   "license": "MIT",
@@ -13,14 +13,16 @@
       "subtitle": "Search for animated gifs on Giphy",
       "description": "Search for an animated gif",
       "mode": "view",
-      "preferences": [{
-        "name": "giphy-apiKey",
-        "type": "textfield",
-        "required": true,
-        "title": "Giphy API Key",
-        "placeholder": "Giphy API Key",
-        "description": "API Key used to perform searches on Giphy. You can get one for free at https://developers.giphy.com"
-      }]
+      "preferences": [
+        {
+          "name": "giphy-apiKey",
+          "type": "textfield",
+          "required": true,
+          "title": "Giphy API Key",
+          "placeholder": "Giphy API Key",
+          "description": "API Key used to perform searches on Giphy. You can get one for free at https://developers.giphy.com"
+        }
+      ]
     },
     {
       "name": "tenor",
@@ -38,6 +40,15 @@
           "description": "API Key used to perform searches on Tenor. You can get one for free at https://tenor.com/gifapi"
         }
       ]
+    }
+  ],
+  "preferences": [
+    {
+      "name": "showGifPreview",
+      "type": "checkbox",
+      "required": false,
+      "label": "Show GIF Preview (Unstable)",
+      "description": "Change the default action on a GIF result to render an inline GIF preview using a custom-built GIF renderer. This preview is quite unstable and buggy, use at your own risk!"
     }
   ],
   "dependencies": {
