@@ -9,7 +9,7 @@
   "commands": [
     {
       "name": "index",
-      "title": "Find Gif",
+      "title": "Gif Search",
       "description": "Search for an animated gif",
       "mode": "view"
     }
