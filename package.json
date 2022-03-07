@@ -21,6 +21,23 @@
         "placeholder": "Giphy API Key",
         "description": "API Key used to perform searches on Giphy. You can get one for free at https://developers.giphy.com"
       }]
+    },
+    {
+      "name": "tenor",
+      "title": "Search Tenor",
+      "subtitle": "Search for animated gifs on Tenor",
+      "description": "Search for an animated gif",
+      "mode": "view",
+      "preferences": [
+        {
+          "name": "tenor-apiKey",
+          "type": "textfield",
+          "required": true,
+          "title": "Tenor API Key",
+          "placeholder": "Tenor API Key",
+          "description": "API Key used to perform searches on Tenor. You can get one for free at https://tenor.com/gifapi"
+        }
+      ]
     }
   ],
   "dependencies": {

@@ -2,9 +2,10 @@ import { getPreferenceValues } from "@raycast/api";
 
 export const API_KEY = "apiKey";
 
-export type ServiceName = "giphy";
+export type ServiceName = "giphy" | "tenor";
 export const GIF_SERVICE: { [name: string]: ServiceName } = {
   GIPHY: "giphy",
+  TENOR: "tenor",
 };
 
 export type Preference = { [preferenceName: string]: any };
