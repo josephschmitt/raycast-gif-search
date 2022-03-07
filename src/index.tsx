@@ -1,10 +1,10 @@
-import {List, showToast, Toast } from "@raycast/api";
 import {useEffect} from 'react';
+import {List, showToast, Toast } from "@raycast/api";
 
 import useGiphyAPI from './hooks/useGiphyAPI';
 import {GifList} from './components/GifList';
-import './fetch-polyfill';
 
+import './fetch-polyfill';
 
 export default function Command() {
   const [results, isLoading, search] = useGiphyAPI({});

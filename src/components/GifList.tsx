@@ -1,5 +1,5 @@
-import {IGif} from '@giphy/js-types';
-import {List, showToast, Toast} from "@raycast/api";
+import {List} from "@raycast/api";
+import type {IGif} from '@giphy/js-types';
 
 import {GifResult} from "./GifResult";
 

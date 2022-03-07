@@ -1,5 +1,5 @@
-import {IGif} from '@giphy/js-types';
 import {Action, ActionPanel, List} from "@raycast/api";
+import type {IGif} from '@giphy/js-types';
 
 import {GifDetails} from './GifDetails';
 
