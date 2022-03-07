@@ -13,7 +13,7 @@ export function GifResult(props: { item: IGif; index: number }) {
       icon={{ source: images.preview_gif.url }}
       actions={
         <ActionPanel title={title}>
-          <Action.Push title="Show Details" target={<GifDetails item={props.item} index={props.index} />} />
+          <Action.Push title="Preview GIF" target={<GifDetails item={props.item} index={props.index} />} />
           <Action.OpenInBrowser url={url} />
           <Action.CopyToClipboard content={url} shortcut={{ modifiers: ["cmd", "shift"], key: "c" }} />
         </ActionPanel>

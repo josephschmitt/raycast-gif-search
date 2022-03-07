@@ -1,15 +1,16 @@
 {
   "$schema": "https://www.raycast.com/schemas/extension.json",
   "name": "gif-search",
-  "title": "gif-search",
-  "description": "Search for animated gifs",
+  "title": "GIF Search",
+  "description": "Search for animated GIFs (currently supports giphy.com, tenor.com support coming soon!)",
   "icon": "command-icon.png",
   "author": "josephschmitt",
   "license": "MIT",
   "commands": [
     {
       "name": "index",
-      "title": "Gif Search",
+      "title": "Search GIFs",
+      "subtitle": "Search for animated gifs on Giphy",
       "description": "Search for an animated gif",
       "mode": "view"
     }
