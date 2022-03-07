@@ -8,21 +8,19 @@
   "license": "MIT",
   "commands": [
     {
-      "name": "index",
-      "title": "Search GIFs",
+      "name": "giphy",
+      "title": "Search Giphy",
       "subtitle": "Search for animated gifs on Giphy",
       "description": "Search for an animated gif",
-      "mode": "view"
-    }
-  ],
-  "preferences": [
-    {
-      "name": "apiKey",
-      "type": "textfield",
-      "required": true,
-      "title": "Giphy API Key",
-      "placeholder": "Giphy API Key",
-      "description": "API Key used to perform searches on Giphy. You can get one for free at https://developers.giphy.com"
+      "mode": "view",
+      "preferences": [{
+        "name": "giphy-apiKey",
+        "type": "textfield",
+        "required": true,
+        "title": "Giphy API Key",
+        "placeholder": "Giphy API Key",
+        "description": "API Key used to perform searches on Giphy. You can get one for free at https://developers.giphy.com"
+      }]
     }
   ],
   "dependencies": {

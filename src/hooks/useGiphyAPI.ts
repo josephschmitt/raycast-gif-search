@@ -5,7 +5,7 @@ import { GiphyFetch } from "@giphy/js-fetch-api";
 import type { GifsResult } from "@giphy/js-fetch-api";
 import type { IGif } from "@giphy/js-types";
 
-import { getAPIKey } from "../preferences";
+import { getAPIKey, GIF_SERVICE } from "../preferences";
 
 interface FetchState {
   term?: string;
@@ -13,7 +13,7 @@ interface FetchState {
   error?: Error;
 }
 
-const gf = new GiphyFetch(getAPIKey());
+const gf = new GiphyFetch(getAPIKey(GIF_SERVICE.GIPHY));
 
 export default function useGiphyAPI({ offset = 0 }) {
   const [isLoading, setIsLoading] = useState(true);
