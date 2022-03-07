@@ -7,11 +7,11 @@ export const DECODE_OUTPUT_TYPE = 'jpeg';
 export interface DecodedGifState {
   url: string;
   frames?: string[];
-
+  isDecoded: boolean;
 }
 
 export function useDecodedGif(url: string, id: string | number) {
-  const [state, setState] = useState<DecodedGifState>({url});
+  const [state, setState] = useState<DecodedGifState>({url, isDecoded: false});
 
   useEffect(() => {
     async function decode() {
@@ -23,7 +23,7 @@ export function useDecodedGif(url: string, id: string | number) {
         base64Frames.push(`data:image/${DECODE_OUTPUT_TYPE};base64,${buff.toString('base64')}`);
       }
 
-      setState({url, frames: base64Frames});
+      setState({url, frames: base64Frames, isDecoded: true});
     }
 
     decode();
