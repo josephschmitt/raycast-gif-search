@@ -1,11 +1,11 @@
-import {useCallback, useEffect, useRef, useState} from 'react';
-import {AbortError} from 'node-fetch';
+import { useCallback, useEffect, useRef, useState } from "react";
+import { AbortError } from "node-fetch";
 
-import {GiphyFetch} from '@giphy/js-fetch-api'
-import type {GifsResult} from '@giphy/js-fetch-api';
-import type {IGif} from '@giphy/js-types';
+import { GiphyFetch } from "@giphy/js-fetch-api";
+import type { GifsResult } from "@giphy/js-fetch-api";
+import type { IGif } from "@giphy/js-types";
 
-import {getAPIKey} from '../preferences';
+import { getAPIKey } from "../preferences";
 
 interface FetchState {
   term?: string;
@@ -13,9 +13,9 @@ interface FetchState {
   error?: Error;
 }
 
-const gf = new GiphyFetch(getAPIKey())
+const gf = new GiphyFetch(getAPIKey());
 
-export default function useGiphyAPI({offset = 0}) {
+export default function useGiphyAPI({ offset = 0 }) {
   const [isLoading, setIsLoading] = useState(true);
   const [results, setResults] = useState<FetchState>();
   const cancelRef = useRef<AbortController | null>(null);
@@ -29,22 +29,22 @@ export default function useGiphyAPI({offset = 0}) {
       let results: GifsResult;
       try {
         if (term) {
-          results = await gf.search(term, {offset});
+          results = await gf.search(term, { offset });
         } else {
-          results = await gf.trending({offset, limit: 10});
+          results = await gf.trending({ offset, limit: 10 });
         }
-        setResults({items: results.data, term});
+        setResults({ items: results.data, term });
       } catch (e) {
         const error = e as Error;
         if (e instanceof AbortError) {
           return;
         }
-        setResults({error});
+        setResults({ error });
       } finally {
         setIsLoading(false);
       }
     },
-    [cancelRef, setIsLoading, setResults],
+    [cancelRef, setIsLoading, setResults]
   );
 
   useEffect(() => {

@@ -1,5 +1,5 @@
-import {useState} from "react";
-import {useInterval} from 'usehooks-ts';
+import { useState } from "react";
+import { useInterval } from "usehooks-ts";
 
 interface GifFrameState {
   currentFrame?: string;
@@ -15,11 +15,11 @@ export function useGifFrames(currentFrame: number, frames: string[], frameRate: 
     if (curFrame >= frameCount - 1) {
       curFrame = 0;
     } else {
-      curFrame++
+      curFrame++;
     }
 
     const frame = frames[curFrame];
-    setState({currentFrame: frame});
+    setState({ currentFrame: frame });
     setCount(curFrame);
   }, frameRate);
 

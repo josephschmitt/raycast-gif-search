@@ -19,9 +19,9 @@
       "name": "apiKey",
       "type": "textfield",
       "required": true,
-      "title": "API Key",
+      "title": "Giphy API Key",
       "placeholder": "Giphy API Key",
-      "description": "An API key is required to perform Giphy API searches"
+      "description": "API Key used to perform searches on Giphy. You can get one for free at https://developers.giphy.com"
     }
   ],
   "dependencies": {

@@ -1,8 +1,8 @@
-import {getPreferenceValues} from "@raycast/api";
+import { getPreferenceValues } from "@raycast/api";
 
-export const API_KEY = "apiKey"
+export const API_KEY = "apiKey";
 
-export type Preference = {[preferenceName: string]: any};
+export type Preference = { [preferenceName: string]: any };
 
 let prefs: Preference;
 
