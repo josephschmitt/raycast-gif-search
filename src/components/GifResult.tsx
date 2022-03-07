@@ -1,16 +1,16 @@
 import { Action, ActionPanel, List } from "@raycast/api";
-import type { IGif } from "@giphy/js-types";
 
 import { GifDetails } from "./GifDetails";
+import type { IGif } from "../models/gif";
 
 export function GifResult(props: { item: IGif; index: number }) {
-  const { id, images, title, url } = props.item;
+  const { id, preview_gif_url, title, url } = props.item;
 
   return (
     <List.Item
       key={id}
       title={title}
-      icon={{ source: images.preview_gif.url }}
+      icon={{ source: preview_gif_url }}
       actions={
         <ActionPanel title={title}>
           <Action.Push title="Preview GIF" target={<GifDetails item={props.item} index={props.index} />} />

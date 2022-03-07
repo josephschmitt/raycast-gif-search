@@ -1,7 +1,7 @@
 import { List } from "@raycast/api";
-import type { IGif } from "@giphy/js-types";
-
 import { GifResult } from "./GifResult";
+
+import type { IGif } from "../models/gif";
 
 export function GifList(props: { term?: string; results?: IGif[] }) {
   if (props.term) {

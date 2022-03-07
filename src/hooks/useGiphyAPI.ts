@@ -1,12 +1,13 @@
-import { useCallback, useEffect, useRef, useState } from "react";
 import { AbortError } from "node-fetch";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 import { GiphyFetch } from "@giphy/js-fetch-api";
 import type { GifsResult } from "@giphy/js-fetch-api";
-import type { IGif } from "@giphy/js-types";
 
+import { mapGiphyResponse } from "../models/gif";
 import { getAPIKey, GIF_SERVICE } from "../preferences";
 
+import type { IGif } from "../models/gif";
 interface FetchState {
   term?: string;
   items?: IGif[];
@@ -33,7 +34,7 @@ export default function useGiphyAPI({ offset = 0 }) {
         } else {
           results = await gf.trending({ offset, limit: 10 });
         }
-        setResults({ items: results.data, term });
+        setResults({ items: results.data.map(mapGiphyResponse), term });
       } catch (e) {
         const error = e as Error;
         if (e instanceof AbortError) {
