@@ -1,29 +1,32 @@
 import {List, showToast, Toast } from "@raycast/api";
 import {useEffect} from 'react';
 
-import useGiphyAPI, {Topic} from './hooks/useGiphyAPI';
-import {GifResult} from "./components/GifResult";
+import useGiphyAPI from './hooks/useGiphyAPI';
+import {GifList} from './components/GifList';
 import './fetch-polyfill';
 
 
 export default function Command() {
-  const state = useGiphyAPI(Topic.TRENDING, {});
+  const [results, isLoading, search] = useGiphyAPI({});
 
   useEffect(() => {
-    if (state.error) {
+    if (results?.error) {
       showToast({
         style: Toast.Style.Failure,
-        title: "Failed loading stories",
-        message: state.error.message,
+        title: "Failed loading gifs",
+        message: results?.error.message,
       });
     }
-  }, [state.error]);
+  }, [results?.error]);
 
   return (
-    <List isLoading={!state.items && !state.error}>
-      {state.items?.data.map((result, index) => (
-        <GifResult key={result.id} item={result} index={index} />
-      ))}
+    <List
+      isLoading={isLoading}
+      throttle={true}
+      searchBarPlaceholder="Search for gifs..."
+      onSearchTextChange={search}
+    >
+      <GifList term={results?.term} results={results?.items} />
     </List>
   );
 }
