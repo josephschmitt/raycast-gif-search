@@ -4,7 +4,7 @@ import type {IGif} from '@giphy/js-types';
 import {GifDetails} from './GifDetails';
 
 export function GifResult(props: {item: IGif, index: number}) {
-  const {id, title, images} = props.item;
+  const {id, images, title, url} = props.item;
 
   return (
     <List.Item
@@ -16,6 +16,11 @@ export function GifResult(props: {item: IGif, index: number}) {
           <Action.Push
             title="Show Details"
             target={<GifDetails item={props.item} index={props.index} />}
+          />
+          <Action.OpenInBrowser url={url} />
+          <Action.CopyToClipboard
+            content={url}
+            shortcut={{modifiers: ["cmd", "shift"], key: "c"}}
           />
         </ActionPanel>
       }
